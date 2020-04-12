@@ -1,0 +1,13 @@
+git init
+
+git add .
+
+git status
+
+git commit -m 'texto'
+
+vai no github, cria um repositorio cola umas mensagens assim:
+git remote add origin https://github.com/gabrielreiss/olist.git
+git push -u origin master
+
+e ta feito
