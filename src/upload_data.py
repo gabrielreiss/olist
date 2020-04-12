@@ -10,7 +10,7 @@ port = '3306'
 database = 'olist'
 
 # Os endereços de nosso projeto e sub pastas
-BASE_DIR = os.path.dirname( os.path.dirname( os.path.abspath(__file__) ) )
+BASE_DIR = os.path.dirname(os.path.dirname( os.path.dirname( os.path.abspath(__file__) ) ) )
 DATA_DIR = os.path.join( BASE_DIR, 'data' )
 
 # Encontrando os arquivos de dados
