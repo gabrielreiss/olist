@@ -1,0 +1,22 @@
+{
+	"folders": [
+		{
+			"path": "F:\\Aprendendo python\\olist"
+		}
+	],
+	"settings": {
+		"sqltools.connections": [
+			{
+				"database": "olist",
+				"dialect": "MySQL",
+				"isActive": true,
+				"isConnected": true,
+				"name": "mysql",
+				"password": "1234",
+				"port": 3306,
+				"server": "localhost",
+				"username": "vscode"
+			}
+		]
+	}
+}
