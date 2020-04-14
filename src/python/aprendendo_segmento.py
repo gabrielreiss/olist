@@ -6,6 +6,7 @@ import pandas as pd
 BASE_DIR = os.path.dirname(os.path.dirname( os.path.dirname( os.path.abspath(__file__) ) ) )
 DATA_DIR = os.path.join( BASE_DIR, 'data' )
 SQL_DIR = os.path.join( BASE_DIR, 'src', 'sql' )
+RESULT_DIR = os.path.join( BASE_DIR, 'resultado' )
 
 # Abrindo conexão com banco...
 user = 'olistado'
@@ -20,9 +21,10 @@ engine = sqlalchemy.create_engine( str_connection )
 connection = engine.connect()
 
 #importa query
-with open( os.path.join(SQL_DIR, 'teste.sql') ) as query_file:
+with open( os.path.join(SQL_DIR, 'seg1.sql') ) as query_file:
     query = query_file.read()
 
 
 tabela = pd.read_sql_query( query, connection)
+tabela.to_csv( os.path.join( RESULT_DIR, 'seg1.csv') )
 print(tabela.head())
