@@ -25,8 +25,8 @@ FROM (
                 COUNT(DISTINCT T1.order_id ) AS qtde_pedidos,
                 COUNT( T2.product_id ) AS qtde_produtos,
                 COUNT(DISTINCT T2.product_id ) AS qtde_produtos,
-                MIN( CAST(julianday('{date_end}') - julianday(T1.order_approved_at) AS INT) ) AS qtde_dias_ult_venda,
-                MAX( CAST(julianday( '{date_end}' ) - julianday( dt_inicio ) AS INT ) ) AS qtde_dias_base
+                MIN( CAST(to_days('{date_end}') + 1721060 - to_days(T1.order_approved_at) AS INT) ) AS qtde_dias_ult_venda,
+                MAX( CAST(to_days( '{date_end}' ) + 1721060 - to_days( dt_inicio ) AS INT ) ) AS qtde_dias_base
 
         FROM tb_orders AS T1
 

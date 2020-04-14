@@ -19,7 +19,7 @@ data = '2018-06-01'
 #con.query('SET GLOBAL connect_timeout=6000')
 
 #importa query
-with open( os.path.join(SQL_DIR, 'segmentos.sql') ) as query_file:
+with open( os.path.join(SQL_DIR, 'teste.sql') ) as query_file:
     query = query_file.read()
 
 query = query.format( date_init = args.date_init,
@@ -37,22 +37,32 @@ str_connection = str_connection.format( user=user, psw=psw, host=host, port=port
 engine = sqlalchemy.create_engine( str_connection )
 connection = engine.connect()
 
-create_query = f'''
-CREATE TABLE tb_seller_sgmt AS
-{query}
-;'''
 
-insert_query = f'''
-DELETE FROM tb_seller_sgmt WHERE DT_SGMT ='{args.date_end}';
-INSERT INTO tb_seller_sgmt
-{query}
-;'''
+tabela = pd.read_sql_query( query, connection)
 
-try:
-    connection.execute( create_query )
-except:
-    for q in insert_query.split(";")[:-1]:
-        connection.execute( insert_query )
+print(tabela.head())
+
+#create_query = f'''
+#CREATE TABLE tb_seller_sgmt AS
+#{query}
+#;'''
+
+#create_query = f'''
+#CREATE TABLE tb_seller_sgmt AS
+#{query}
+#;'''
+
+#insert_query = f'''
+#DELETE FROM tb_seller_sgmt WHERE DT_SGMT ='{args.date_end}';
+#INSERT INTO tb_seller_sgmt
+#{query}
+#;'''
+
+#try:
+#    connection.execute( create_query )
+#except:
+#    for q in insert_query.split(";")[:-1]:
+#        connection.execute( insert_query )
 
 
 
