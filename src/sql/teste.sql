@@ -1,3 +1,9 @@
-SELECT *
+SELECT seller_id,
 FROM tb_orders
-WHERE order_delivered_customer_date BETWEEN '{data_init}' AND '{data_end}';
+
+LEFT JOIN tb_sellers
+ON tb_orders.seller_id = seller_id
+
+
+WHERE order_delivered_customer_date 
+BETWEEN '2017-01-01' AND '2017-12-31';
